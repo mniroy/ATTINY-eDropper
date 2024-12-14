@@ -5,9 +5,11 @@
 #define SERVO_PIN 3   // Pin connected to the servo
 
 Servo myServo;
+volatile bool buttonPressed = false;
 
 void setup() {
   pinMode(BUTTON_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), wakeUp, FALLING);
   myServo.attach(SERVO_PIN);
   Serial.begin(9600);
 
@@ -30,5 +32,9 @@ void loop() {
 
 void goToSleep() {
   Serial.println("Going to sleep...");
-  LowPower.sleep(5000);  // Put ATtiny85 to sleep for 5 seconds
+  LowPower.sleep();  // Put ATtiny85 to sleep indefinitely
+}
+
+void wakeUp() {
+  buttonPressed = true;
 }

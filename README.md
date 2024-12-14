@@ -3,6 +3,11 @@
 ## Description
 The ATTINY-eDropper is a DIY project that uses an ATtiny85 microcontroller to create an electronic dropper post for a mountain bike (MTB). When the button is pressed, the servo moves to 60 degrees, simulating the dropper post being activated. When the button is released, the servo returns to 0 degrees, simulating the dropper post being deactivated. The microcontroller also goes to sleep to conserve power when idle.
 
+## How It Works
+- The servo stays at 60 degrees as long as the button is pressed.
+- When the button is released, the servo returns to 0 degrees.
+- The ATtiny85 goes to sleep to conserve power when the button is not pressed and wakes up when the button is pressed again.
+
 ## Hardware Requirements
 - ATtiny85 microcontroller
 - High-torque servo motor (recommended: MG996R or similar)
